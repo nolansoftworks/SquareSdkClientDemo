@@ -17,7 +17,8 @@ namespace SquareSdkClientDemoUnitTests
         public static void ClassInitialize(TestContext context)
         {
             var configuration = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json", optional: false)
+                .AddJsonFile("appsettings.json",
+                             optional: false)
                 .Build();
 
             var options = configuration
