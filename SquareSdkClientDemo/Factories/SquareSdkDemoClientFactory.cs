@@ -10,7 +10,7 @@ using SquareSdkClientDemo.Extensions;
 
 namespace SquareSdkClientDemo.Factories
 {
-    public class SquareSdkDemoClientFactory :ISquareSdkDemoClientFactory
+    public class SquareSdkDemoClientFactory : ISquareSdkDemoClientFactory
     {
         private readonly IServiceProvider serviceProvider;
 
@@ -22,6 +22,8 @@ namespace SquareSdkClientDemo.Factories
 
             if (options.SquareSdkDemoClient != null)
                 services.AddSecureClient<ISquareSdkDemoClient, SquareSdkDemoClient>(options.SquareSdkDemoClient);
+
+            serviceProvider = services.BuildServiceProvider();
         }
 
         public ISquareSdkDemoClient CreateSquareSdkDemoClient()

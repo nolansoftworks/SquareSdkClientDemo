@@ -31,15 +31,7 @@ namespace SquareSdkClientDemo.Extensions
             return services;
         }
 
-        public static IServiceCollection AddSquareSdkDemoClientFactory(this IServiceCollection services, IConfiguration configuration)
-        {
-            var options = configuration.GetSection(nameof(SquareSdkDemoClientFactoryOptions))
-                .Get<SquareSdkDemoClientFactoryOptions>();
-
-            return services.AddSquareSdkDemoClientFactory(options);
-        }
-
-        private static IServiceCollection AddSquareSdkDemoClientFactory(this IServiceCollection services,
+        public static IServiceCollection AddSquareSdkDemoClientFactory(this IServiceCollection services,
             SquareSdkDemoClientFactoryOptions options)
         {
             options = options ?? throw new ArgumentNullException(nameof(options));
@@ -49,6 +41,14 @@ namespace SquareSdkClientDemo.Extensions
                 .AddSingleton<ISquareSdkDemoClientFactory, SquareSdkDemoClientFactory>();
 
             return services;
+        }
+
+        public static IServiceCollection AddSquareSdkDemoClientFactory(this IServiceCollection services, IConfiguration configuration)
+        {
+            var options = configuration.GetSection(nameof(SquareSdkDemoClientFactoryOptions))
+                .Get<SquareSdkDemoClientFactoryOptions>();
+
+            return services.AddSquareSdkDemoClientFactory(options);
         }
     }
 }
